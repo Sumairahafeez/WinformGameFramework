@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EZInput, Version=1.3.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EZInput.1.3.2\lib\netstandard2.0\EZInput.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,19 +45,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collission\EnemyVSPlayerCollision.cs" />
+    <Compile Include="Collission\ICollision.cs" />
+    <Compile Include="Enum\Action.cs" />
+    <Compile Include="Enum\Direction.cs" />
+    <Compile Include="Enum\ObjectType.cs" />
+    <Compile Include="FactoryPattern\FactoryPattern.cs" />
+    <Compile Include="Firing\IPlayer.cs" />
+    <Compile Include="Firing\Player.cs" />
     <Compile Include="GameObjects\Game.cs" />
     <Compile Include="GameObjects\GameObject.cs" />
-    <Compile Include="Interface\IMovement.cs" />
+    <Compile Include="Movement\HorizontalMovement.cs" />
+    <Compile Include="Movement\IMovement.cs" />
+    <Compile Include="Movement\KeyboardMovement.cs" />
+    <Compile Include="Movement\VerticalMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Collission\" />
-    <Folder Include="Enum\" />
-    <Folder Include="FactoryPattern\" />
-    <Folder Include="Firing\" />
-    <Folder Include="Movement\" />
-    <Folder Include="States\" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

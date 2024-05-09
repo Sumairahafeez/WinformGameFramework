@@ -1,0 +1,9 @@
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\obj\Debug\GameLibrary.csproj.AssemblyReference.cache
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\obj\Debug\GameLibrary.csproj.CoreCompileInputs.cache
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\bin\Debug\GameLibrary.dll
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\bin\Debug\GameLibrary.pdb
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\bin\Debug\EZInput.dll
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\bin\Debug\EZInput.xml
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\obj\Debug\GameLibr.D5A65543.Up2Date
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\obj\Debug\GameLibrary.dll
+F:\2nd semester\OOP Lab\Game\GameFramework\GameLibrary\GameLibrary\obj\Debug\GameLibrary.pdb

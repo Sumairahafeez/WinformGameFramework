@@ -5,53 +5,71 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GameLibrary.Enum;
+using GameLibrary.Movement;
+using GameLibrary;
 
 namespace GameLibrary.GameObjects
 {
     public class GameObject
-    {
-        public PictureBox Pb;
-        public IMovement controller;
-        private Point Position;
+    {   //sets the attributes of a game object
+        private PictureBox Pb;
+        private IMovement controller;
+        private System.Drawing.Point Position;
         private static GameObject ObjectInstance;
-        private int Players = 0;
-        private int Enemies = 0;
-        private int Bullets = 0;
         private ObjectType Type;
-        private int Score;
-        private float Health = 1000;
-        private GameObject(Image img, int left, int top, IMovement controller, ObjectType Type)
+        private int Score = 0;
+        private float Health = 100;
+        //singleton principle for th eimplementation of factory pattern
+        private GameObject(Image img, int left, int top, IMovement controller, ObjectType Type, bool isVisible)
         {
-            Position = new Point(left, top);
+            Position = new System.Drawing.Point(left, top);
             Pb = new PictureBox();
             Pb.Image = img;
             Pb.Location = Position;
-            if (Type == ObjectType.Player)
-                Pb.Size = new Size(img.Width, img.Height);
-            else if (Type == ObjectType.Enemy)
-                Pb.Size = new Size(img.Width / 2, img.Height / 2);
-            else if (Type == ObjectType.Bullet)
-                Pb.Size = new Size((img.Width / 2), (img.Height));
+            Pb.Size = new Size(img.Width, img.Height);
+
+            Pb.Size = new Size(img.Width / 2, img.Height / 2);
+
+            Pb.Size = new Size((img.Width / 2), (img.Height));
             Pb.SizeMode = PictureBoxSizeMode.StretchImage;
             Pb.BackColor = Color.Transparent;
+            Pb.Visible = isVisible;
             this.controller = controller;
             SetObjectTypes(Type);
         }
-        private GameObject() { }
-        protected GameObject GetGameObject() { return new GameObject(); }
-        public static GameObject GetObjectInstance(Image img, int left, int top, IMovement controller, ObjectType Type)
+        //instance setter for implementation of factory pattern
+        public static GameObject GetObjectInstance(Image img, int left, int top, IMovement controller, ObjectType Type, bool isVisble)
         {
-            if ((FactoryPattern.GetMaxObstacles() <= 15) && (FactoryPattern.GetMaxPlayers() <= 5) && (FactoryPattern.GetMaxEnemies() <= 10) && (FactoryPattern.GetMaxBullets() <= 1000))
+            if ((FactoryPattern.GetMaxObstacles() <= 15) && (FactoryPattern.GetMaxPlayers() <= 5) && (FactoryPattern.GetMaxEnemies() <= 100))
             {
-                ObjectInstance = new GameObject(img, left, top, controller, Type);
+                ObjectInstance = new GameObject(img, left, top, controller, Type, isVisble);
+                return ObjectInstance;
             }
             else
             {
                 throw new Exception("More than capacity production");
             }
-            return ObjectInstance;
-        }
+            
 
+        }
+        //getter setter for the private attributes
+        public PictureBox GetPictureBox()
+        {
+            return Pb;
+        }
+        public void SetPictureBox(PictureBox Pb)
+        {
+            this.Pb = Pb;
+        }
+        public void SetMovement(IMovement movement)
+        {
+            this.controller = movement;
+        }
+        public IMovement GetMovement()
+        {
+            return this.controller;
+        }
         public int GetScore()
         {
             return Score;
@@ -68,20 +86,21 @@ namespace GameLibrary.GameObjects
         {
             return Health;
         }
+        //it sets the types of objects and increment them in th efactory
         public void SetObjectTypes(ObjectType Type)
         {
             if (Type == ObjectType.Player)
             {
-                FactoryPattern.SetMaxPlayers(Players += 1);
+                FactoryPattern.SetMaxPlayers(FactoryPattern.GetMaxPlayers() + 1);
 
             }
             else if (Type == ObjectType.Enemy)
             {
-                FactoryPattern.SetMaxEnemy(Enemies += 1);
+                FactoryPattern.SetMaxEnemy(FactoryPattern.GetMaxEnemies() + 1);
             }
             else if (Type == ObjectType.Bullet)
             {
-                FactoryPattern.SetMaxBullets(Bullets++);
+                FactoryPattern.SetMaxBullets(FactoryPattern.GetMaxBullets() + 1);
             }
             this.Type = Type;
         }
@@ -89,15 +108,25 @@ namespace GameLibrary.GameObjects
         {
             return Type;
         }
-        public Point GetPosition()
+        public void SetPosition(System.Drawing.Point Position)
+        {
+            this.Position = Position;
+        }
+        public System.Drawing.Point GetPosition()
         {
             return Position;
         }
-        public void update(Point Location)
+        //Updates the picture boc and sets it to new location
+        public void update(System.Drawing.Point Location)
         {
-            Position = controller.Move(Location);
 
+            Position = controller.Move(Location);
+                                         
             Pb.Location = Position;
+
+
         }
+       
+       
     }
 }
