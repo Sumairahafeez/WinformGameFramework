@@ -59,7 +59,7 @@ This project was submitted by Sumaira Hafeez under the supervision of Sir Dr. Aw
 
 For any inquiries or contributions, please contact:
 
-- Sumaira Hafeez: [email@example.com](mailto:sumairahafeezfp@gmail.com)
+- Sumaira Hafeez: [sumairahafeezfp@gmail.com](mailto:sumairahafeezfp@gmail.com)
 
 
 ---
